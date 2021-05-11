@@ -2,12 +2,15 @@ package sk.ukf.bluepong;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
+    private BluetoothAdapter ba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     private void showFirstTimeTutorial() {
         startTutorial(null);
