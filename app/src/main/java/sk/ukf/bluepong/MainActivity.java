@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void enableServices() {
+        ba = BluetoothAdapter.getDefaultAdapter();
 
+        if (ba == null) {
+            Toast.makeText(this, "Your device doesn't have bluetooth." +
+                    "Please try launching the game on a different device.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        //if (ba.isEnabled())
+        //}TODO
+    }
+
+    private void disableButtons() {
+
+    }
 
     private void showFirstTimeTutorial() {
         startTutorial(null);

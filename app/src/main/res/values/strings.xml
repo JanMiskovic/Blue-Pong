@@ -9,4 +9,8 @@
     </string>
     <string name="cont">Continue</string>
     <string name="enable_services">Enable necessary services</string>
+    <string name="pair_button">Pair with new device</string>
+    <string name="show_paired_button">Show paired devices</string>
+    <string name="create_server_button">Create game</string>
+    <string name="join_server_button">Join game</string>
 </resources>
