@@ -2,7 +2,7 @@
     <string name="app_name">BluePong</string>
     <string name="guide_button">How to play</string>
     <string name="tutorial">
-        1. Make sure the game is running on both devices, and that necessary services are turned on.\n\n
+        1. Make sure that necessary services are turned on (Bluetooth / GPS for pairing).\n\n
         2. Pair with the device you want to play against. If you are already paired, you can skip this step.\n\n
         3. Start the game on either device. Connect to the game from the other device.\n\n
         4. Move the paddles by dragging or tapping. Try to beat your opponent!
@@ -13,4 +13,7 @@
     <string name="show_paired_button">Show paired devices</string>
     <string name="create_server_button">Create game</string>
     <string name="join_server_button">Join game</string>
+    <string name="pair_text">Pair with new device</string>
+    <string name="scan_nearby_button">Scan for nearby devices</string>
+    <string name="pair_guide">First scan for nearby devices, then tap the device you want to pair with.</string>
 </resources>

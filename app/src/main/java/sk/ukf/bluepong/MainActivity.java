@@ -6,10 +6,13 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         if (prefs.getBoolean("firstStart", true)) {
             showFirstTimeTutorial();
         }
-
-
     }
 
     public void enableServices(View v) {
@@ -44,7 +45,18 @@ public class MainActivity extends AppCompatActivity {
             enableBluetoothAndDiscoverable();
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+        LocationManager lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        if (lm == null) {
+            Toast.makeText(this, "Your device doesn't have GPS." +
+                    "Please try launching the game on a different device.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            enableLocation();
+        }
 
         updateButtons();
     }
@@ -53,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
         startActivityForResult(intent, 1);
+    }
+
+    private void enableLocation() {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivityForResult(intent,2);
     }
 
     // Disables or enables the 4 main menu buttons, depending on the status of Bluetooth, Discoverable and GPS access
@@ -67,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showFirstTimeTutorial() {
-        startTutorial(null);
+        startTutorialActivity(null);
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -75,8 +92,13 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    public void startTutorial(View view) {
+    public void startTutorialActivity(View view) {
         Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+        startActivity(intent);
+    }
+
+    public void startPairActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, PairActivity.class);
         startActivity(intent);
     }
 
@@ -84,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             // If returning from turning on bluetooth or discovery mode, check if buttons should change
-            case 1:
+            case 1: case 2:
                 updateButtons();
                 break;
 
@@ -95,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
-            case 2:
+            case 1:
                 updateButtons();
                 break;
 

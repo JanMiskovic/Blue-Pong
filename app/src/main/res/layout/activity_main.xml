@@ -45,7 +45,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/poppins"
-        android:onClick="startTutorial"
+        android:onClick="startTutorialActivity"
         android:text="@string/guide_button"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="16sp"
@@ -87,6 +87,7 @@
             android:id="@+id/pairButton"
             android:layout_width="150dp"
             android:layout_height="65dp"
+            android:onClick="startPairActivity"
             android:text="@string/pair_button"
             android:textColor="@color/white" />
 
@@ -109,7 +110,7 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.076">
+        app:layout_constraintVertical_bias="0.01999998">
 
         <Button
             android:id="@+id/createButton"
@@ -126,8 +127,7 @@
             android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:text="@string/join_server_button"
-            android:textColor="@color/white"
-            tools:text="@string/join_server_button" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
