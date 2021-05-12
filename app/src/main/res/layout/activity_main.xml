@@ -96,6 +96,7 @@
             android:layout_width="150dp"
             android:layout_height="65dp"
             android:layout_marginStart="20dp"
+            android:onClick="startShowPairedActivity"
             android:text="@string/show_paired_button"
             android:textColor="@color/white" />
 

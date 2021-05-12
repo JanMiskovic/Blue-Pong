@@ -102,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startShowPairedActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, ShowPairedActivity.class);
+        startActivity(intent);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {

@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BluePong">
+        <activity android:name=".ShowPairedActivity"></activity>
         <activity
             android:name=".PairActivity"
             android:screenOrientation="portrait" />

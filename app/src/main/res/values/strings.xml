@@ -16,4 +16,5 @@
     <string name="pair_text">Pair with new device</string>
     <string name="scan_nearby_button">Scan for nearby devices</string>
     <string name="pair_guide">First scan for nearby devices, then tap the device you want to pair with.</string>
+    <string name="paired_devices">Paired devices</string>
 </resources>
