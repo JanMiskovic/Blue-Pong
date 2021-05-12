@@ -4,7 +4,7 @@
     <string name="tutorial">
         1. Make sure the game is running on both devices, and that necessary services are turned on.\n\n
         2. Pair with the device you want to play against. If you are already paired, you can skip this step.\n\n
-        3. Start the server on either device. Connect to the server from the other device.\n\n
+        3. Start the game on either device. Connect to the game from the other device.\n\n
         4. Move the paddles by dragging or tapping. Try to beat your opponent!
     </string>
     <string name="cont">Continue</string>
