@@ -102,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startServer(View view) {
+        Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        intent.putExtra("isHost", true);
+        startActivity(intent);
+    }
+
     public void startShowPairedActivity(View view) {
         Intent intent = new Intent(MainActivity.this, ShowPairedActivity.class);
         startActivity(intent);
