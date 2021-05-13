@@ -7,34 +7,90 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/servicesButton">
+
+        <Button
+            android:id="@+id/pairButton"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:onClick="startPairActivity"
+            android:text="@string/pair_button"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/showPairedButton"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="20dp"
+            android:onClick="startShowPairedActivity"
+            android:text="@string/show_paired_button"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:lineSpacingExtra="-70dp"
+        android:text="@string/app_title"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <Button
+        android:id="@+id/servicesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="enableServices"
+        android:text="@string/enable_services"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.01">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/app_name"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="60sp" />
+        <Button
+            android:id="@+id/createButton"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:onClick="startServer"
+            android:text="@string/create_server_button"
+            android:textColor="@color/white" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/bluetooth" />
+        <Button
+            android:id="@+id/joinButton"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:text="@string/join_server_button"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
@@ -56,81 +112,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.959" />
-
-    <Button
-        android:id="@+id/servicesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="enableServices"
-        android:text="@string/enable_services"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.182" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servicesButton"
-        app:layout_constraintVertical_bias="0.217">
-
-        <Button
-            android:id="@+id/pairButton"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:onClick="startPairActivity"
-            android:text="@string/pair_button"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/showPairedButton"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="20dp"
-            android:onClick="startShowPairedActivity"
-            android:text="@string/show_paired_button"
-            android:textColor="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.01999998">
-
-        <Button
-            android:id="@+id/createButton"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
-            android:onClick="startServer"
-            android:text="@string/create_server_button"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/joinButton"
-            android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:text="@string/join_server_button"
-            android:textColor="@color/white" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
