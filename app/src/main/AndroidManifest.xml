@@ -15,16 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BluePong">
-        <activity android:name=".GameActivity"></activity>
-        <activity android:name=".ShowPairedActivity" />
         <activity
-            android:name=".PairActivity"
+            android:name=".activities.JoinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TutorialActivity"
+            android:name=".activities.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.ShowPairedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PairActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TutorialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

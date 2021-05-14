@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowPairedActivity">
+    tools:context=".activities.ShowPairedActivity">
 
     <ListView
         android:id="@+id/pairedDevicesListView"
@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/paired_devices"
+        android:textAlignment="center"
         android:textColor="?attr/colorPrimary"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"

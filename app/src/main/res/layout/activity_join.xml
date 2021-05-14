@@ -4,61 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PairActivity">
+    tools:context=".activities.JoinActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099">
+        app:layout_constraintVertical_bias="0.083">
 
         <TextView
-            android:id="@+id/pairwithnewdevice"
+            android:id="@+id/jointext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/pair_text"
+            android:lineSpacingExtra="-20dp"
+            android:text="@string/join_title"
             android:textAlignment="center"
             android:textColor="?attr/colorPrimary"
-            android:textSize="30sp" />
+            android:textSize="40sp" />
 
         <TextView
-            android:id="@+id/pairtutorial"
+            android:id="@+id/jointutorial"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins"
-            android:text="@string/pair_guide"
+            android:text="@string/join_guide"
             android:textAlignment="center"
             android:textColor="?attr/colorOnSecondary" />
-
-        <Button
-            android:id="@+id/scanButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="scanForNearbyDevices"
-            android:text="@string/scan_nearby_button"
-            android:textColor="@color/white" />
-
     </LinearLayout>
 
     <ListView
-        android:id="@+id/devicesListView"
+        android:id="@+id/joinableDevicesListView"
         android:layout_width="330dp"
-        android:layout_height="380dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.764">
+
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

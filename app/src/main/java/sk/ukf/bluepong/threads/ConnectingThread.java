@@ -1,4 +1,4 @@
-package sk.ukf.bluepong;
+package sk.ukf.bluepong.threads;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -9,7 +9,9 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.UUID;
 
-class ConnectingThread extends Thread {
+import sk.ukf.bluepong.Game;
+
+public class ConnectingThread extends Thread {
 
     private final BluetoothSocket bluetoothSocket;
     private final BluetoothDevice opponent;
@@ -50,7 +52,7 @@ class ConnectingThread extends Thread {
         ct.setSocket(bluetoothSocket);
         try {
             // Send the obtained bytes to the UI Activity
-            handler.obtainMessage(GameActivity.ACCEPTED, -1, -1, null)
+            handler.obtainMessage(Game.ACCEPTED, -1, -1, null)
                     .sendToTarget();
         } catch (Exception e) { Log.e("", "error", e); }
         ct.start();

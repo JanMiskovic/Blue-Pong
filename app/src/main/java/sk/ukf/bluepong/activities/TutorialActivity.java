@@ -1,9 +1,11 @@
-package sk.ukf.bluepong;
+package sk.ukf.bluepong.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+
+import sk.ukf.bluepong.R;
 
 public class TutorialActivity extends AppCompatActivity {
 

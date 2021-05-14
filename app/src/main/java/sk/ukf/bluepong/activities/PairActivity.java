@@ -1,4 +1,4 @@
-package sk.ukf.bluepong;
+package sk.ukf.bluepong.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+
+import sk.ukf.bluepong.R;
 
 public class PairActivity extends AppCompatActivity {
 

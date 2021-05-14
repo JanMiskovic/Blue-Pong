@@ -1,4 +1,4 @@
-package sk.ukf.bluepong;
+package sk.ukf.bluepong.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
+
+import sk.ukf.bluepong.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,22 +85,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.joinButton).setEnabled(shouldBeEnabled);
     }
 
-    private void showFirstTimeTutorial() {
-        startTutorialActivity(null);
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
-    }
-
-    public void startTutorialActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+    public void startPairActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, PairActivity.class);
         startActivity(intent);
     }
 
-    public void startPairActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, PairActivity.class);
+    public void startShowPairedActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, ShowPairedActivity.class);
         startActivity(intent);
     }
 
@@ -108,9 +101,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startShowPairedActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, ShowPairedActivity.class);
+    public void startJoinActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, JoinActivity.class);
         startActivity(intent);
+    }
+
+    public void startTutorialActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+        startActivity(intent);
+    }
+
+    private void showFirstTimeTutorial() {
+        startTutorialActivity(null);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

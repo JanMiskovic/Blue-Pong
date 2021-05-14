@@ -1,4 +1,4 @@
-package sk.ukf.bluepong;
+package sk.ukf.bluepong.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Set;
+
+import sk.ukf.bluepong.R;
 
 public class ShowPairedActivity extends AppCompatActivity {
 

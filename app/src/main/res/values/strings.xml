@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">BluePong</string>
-    <string name="app_title">Blue\nPong</string>
+    <string name="app_title">Blue.\nPong</string>
     <string name="guide_button">How to play</string>
     <string name="tutorial">
         1. Make sure that necessary services are turned on (Bluetooth / GPS for pairing).\n\n
@@ -16,6 +16,8 @@
     <string name="join_server_button">Join game</string>
     <string name="pair_text">Pair with new device</string>
     <string name="scan_nearby_button">Scan for nearby devices</string>
-    <string name="pair_guide">First scan for nearby devices, then tap the device you want to pair with.</string>
+    <string name="pair_guide">First scan for nearby devices, then tap the device you want to pair with. Make sure your GPS / Location is turned on.</string>
     <string name="paired_devices">Paired devices</string>
+    <string name="join_title">Choose which\ndevice to join</string>
+    <string name="join_guide">Make sure the device you are trying to join has created a game. Otherwise, you won\'t be able to join.</string>
 </resources>

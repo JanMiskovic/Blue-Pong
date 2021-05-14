@@ -2,16 +2,16 @@ package sk.ukf.bluepong;
 
 public class Paddle {
 
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
-    public Paddle(int x, int y) {
+    public Paddle(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
-    public void setX(int x) { this.x = x; }
-    public void setY(int y) { this.y = y; }
+    public float getX() { return x; }
+    public float getY() { return y; }
+    public void setX(float x) { this.x = x; }
+    public void setY(float y) { this.y = y; }
 }
