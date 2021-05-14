@@ -53,6 +53,6 @@ public class ListeningThread extends Thread {
     // Cancel the listening socket and terminate the thread
     public void cancel() {
         try { bluetoothServerSocket.close(); }
-        catch (IOException e) { e.printStackTrace(); }
+        catch (Exception e) { e.printStackTrace(); }
     }
 }

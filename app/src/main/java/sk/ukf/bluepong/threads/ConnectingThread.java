@@ -61,6 +61,6 @@ public class ConnectingThread extends Thread {
     // Cancel an open connection and terminate the thread
     public void cancel() {
         try { bluetoothSocket.close(); }
-        catch (IOException e) { e.printStackTrace(); }
+        catch (Exception e) { e.printStackTrace(); }
     }
 }

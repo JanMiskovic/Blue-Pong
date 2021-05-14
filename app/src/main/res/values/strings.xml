@@ -20,4 +20,8 @@
     <string name="paired_devices">Paired devices</string>
     <string name="join_title">Choose which\ndevice to join</string>
     <string name="join_guide">Make sure the device you are trying to join has created a game. Otherwise, you won\'t be able to join.</string>
+    <string name="waiting_for_opponent">Waiting for\nopponent</string>
+    <string name="trying_to_connect">Attempting to\nconnect</string>
+    <string name="opponent_connected">Opponent connected!</string>
+    <string name="connection_successful">Connection successful!</string>
 </resources>

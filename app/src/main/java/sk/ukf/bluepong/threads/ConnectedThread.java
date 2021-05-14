@@ -63,11 +63,11 @@ public class ConnectedThread extends Thread {
             handler.obtainMessage(Game.MESSAGE_WRITE, -1, -1, buffer)
                     .sendToTarget();
         } catch (IOException e) {
-            Log.e("", "Exception during write", e);
+            Log.e("", e.getMessage());
         }
     }
     public void cancel() {
         try { socket.close(); }
-        catch (IOException e) { Log.e("", "close() of connect socket failed", e); }
+        catch (Exception e) { Log.e("connectedThread close", e.getMessage()); }
     }
 }
