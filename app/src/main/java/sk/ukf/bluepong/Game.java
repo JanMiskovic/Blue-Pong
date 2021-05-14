@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.UUID;
 
 import sk.ukf.bluepong.activities.GameActivity;
@@ -38,6 +39,8 @@ public class Game extends View {
 
     private Handler updateHandler;
     private UpdateThread updateThread;
+    private MotionEvent lastEvent;
+    private int lastUpdatedX;
 
     private Paint paint;
     private Paddle myPaddle;
@@ -47,6 +50,8 @@ public class Game extends View {
     private static int height;
     private GameActivity ga;
     private boolean gameIsRunning;
+    private int myScore = 0;
+    private int enemyScore = 0;
 
     public Game(Context context) {
         super(context);
@@ -117,11 +122,28 @@ public class Game extends View {
     }
 
     public void update() {
+        if (Math.abs(lastEvent.getX() - lastUpdatedX) > 20) {
+            lastUpdatedX = (int) lastEvent.getX();
+            int data = (int) mapValue(lastEvent.getX(), 0, width, 0, 1000);
+            sendMessageInt(data);
+        }
+
         ball.move();
+
         ball.checkPaddleCollision(myPaddle);
         ball.checkPaddleCollision(opponentPaddle);
         ball.checkSideWallCollision();
-        ball.checkBallScored();
+
+        if (ball.checkBallScored()) {
+            if (ball.getY() - ball.getHeight() <= 0) ga.updateMyScore(++myScore);
+            else ga.updateEnemyScore(++enemyScore);
+            createBall();
+        }
+    }
+
+    private void createBall() {
+        if (isHost) ball = new Ball(width / 2, height / 2, width / 20, width / 20, true, true);
+        else ball = new Ball(width / 2, height / 2, width / 20, width / 20, false, false);
     }
 
     @SuppressLint("HandlerLeak")
@@ -131,44 +153,48 @@ public class Game extends View {
             switch (msg.what) {
                 case CONNECTED:
                     ga.opponentConnected();
-                    ball = new Ball(width / 2, height / 2, height / 50, height / 50);
+                    createBall();
                     gameIsRunning = true;
                     updateThread.start();
                     break;
 
                 case ACCEPTED:
                     ga.connectionSuccessful();
-                    ball = new Ball(width / 2, height / 2, height / 50, height / 50);
+                    createBall();
                     gameIsRunning = true;
                     updateThread.start();
                     break;
 
                 case MESSAGE_WRITE:
                     byte[] writeBuffer = (byte[]) msg.obj;
-                    int x = (int) mapValue(ByteBuffer.wrap(writeBuffer).getInt(), 0, 100, 0, width);
-                    myPaddle.setX(x);
-                    invalidate();
+                    ByteBuffer wb = ByteBuffer.wrap(writeBuffer);
+                    int value = wb.getInt();
+                    value = (int) mapValue(value, 0, 1000, 0, width);
+                    myPaddle.setX(value);
+
                     break;
 
                 case MESSAGE_READ:
                     byte[] readBuffer = (byte[]) msg.obj;
-                    x = (int) mapValue(ByteBuffer.wrap(readBuffer).getInt(), 0, 100, 0, width);
-                    opponentPaddle.setX(x);
-                    invalidate();
+                    ByteBuffer rb = ByteBuffer.wrap(readBuffer);
+                    value = rb.getInt();
+                    value = (int) mapValue(value, 0, 1000, width, 0);
+                    opponentPaddle.setX(value);
+
                     break;
             }
         }
     };
 
     public void sendMessageInt(int message) {
-        byte[] writeBuffer = ByteBuffer.allocate(4).putInt(message).array();
-        connectedThread.write(writeBuffer);
+        ByteBuffer bb = ByteBuffer.allocate(4).putInt(message);
+        connectedThread.write(bb.array());
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (gameIsRunning) {
-            sendMessageInt((int) mapValue((int) event.getX(), 0, width, 0, 100));
+            lastEvent = event;
         }
 
         return true;
@@ -185,6 +211,7 @@ public class Game extends View {
         opponentPaddle = new Paddle(width / 2, height / 20, width / 6, height / 50);
 
         // This is here because this method basically works like 'onLayoutLoaded' (LIDL solution for now)
+        lastEvent = MotionEvent.obtain(1, 1, MotionEvent.ACTION_DOWN, width/2, height/2, 0);
         if (isHost) ga.waitingForConnection();
         else ga.tryingToConnect();
     }
@@ -204,6 +231,7 @@ public class Game extends View {
         if (listenThread != null) listenThread.cancel();
         if (connectingThread != null) connectingThread.cancel();
         if (connectedThread != null) connectedThread.cancel();
+        if (updateThread != null) updateThread.interrupt();
     }
 
     private float mapValue(float value, float istart, float istop, float ostart, float ostop) {

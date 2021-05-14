@@ -14,6 +14,8 @@ import sk.ukf.bluepong.R;
 public class GameActivity extends AppCompatActivity {
 
     private TextView gameText;
+    private TextView myScore;
+    private TextView enemyScore;
     private Game game;
 
     @Override
@@ -22,6 +24,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         gameText = findViewById(R.id.gameText);
+        myScore = findViewById(R.id.myScore);
+        enemyScore = findViewById(R.id.enemyScore);
         game = findViewById(R.id.gameView);
     }
 
@@ -40,13 +44,18 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void opponentConnected() {
-        //gameText.setText(R.string.opponent_connected);
         gameText.setVisibility(View.GONE);
     }
 
     public void connectionSuccessful() {
-        //gameText.setText(R.string.connection_successful);
         gameText.setVisibility(View.GONE);
     }
 
+    public void updateMyScore(int score) {
+        myScore.setText(String.valueOf(score));
+    }
+
+    public void updateEnemyScore(int score) {
+        enemyScore.setText(String.valueOf(score));
+    }
 }

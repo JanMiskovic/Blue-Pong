@@ -2,33 +2,31 @@ package sk.ukf.bluepong;
 
 public class Ball {
 
-    private int x;
-    private int y;
+    private float x;
+    private float y;
     private int width;
     private int height;
-    private int speedX;
-    private int speedY;
+    private float speedX;
+    private float speedY;
     private boolean directionRight;
     private boolean directionDown;
 
-    public Ball(int x, int y, int width, int height) {
+    public Ball(int x, int y, int width, int height, boolean directionRight, boolean directionDown) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        speedX = Game.getW() / 50;
-        speedY = Game.getH() / 100;
-        directionRight = true;
-        directionDown = true;
+        speedX = (float) (Game.getW() / 100);
+        speedY = (float) (Game.getH() / 180);
+        this.directionRight = directionRight;
+        this.directionDown = directionDown;
     }
 
-    public boolean move() {
+    public void move() {
         if (directionRight) x += speedX;
         else x -= speedX;
         if (directionDown) y += speedY;
         else y -= speedY;
-
-        return true;
     }
 
     public boolean checkPaddleCollision(Paddle paddle) {
@@ -54,12 +52,10 @@ public class Ball {
         return y + width >= Game.getH() || y - width <= 0;
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
+    public float getX() { return x; }
+    public float getY() { return y; }
     public int getWidth() { return width; }
     public int getHeight() { return height; }
-    public int getSpeedX() { return speedX; }
-    public int getSpeedY() { return speedY; }
     public boolean getDirectionRight() { return directionRight; }
     public boolean getDirectionDown() { return directionDown; }
     public void setX(int x) { this.x = x; }
